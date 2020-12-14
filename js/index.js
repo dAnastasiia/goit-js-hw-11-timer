@@ -11,7 +11,15 @@ class CountdownTimer {
     this.targetDate = targetDate;
   }
 
+  prestartAction() {
+    const currentTime = Date.now();
+    const deltaTime = this.targetDate - currentTime;
+    const time = this.getTime(deltaTime);
+    this.updateTime(time);
+  }
+
   start() {
+    this.prestartAction();
     setInterval(() => {
       const currentTime = Date.now();
       const deltaTime = this.targetDate - currentTime;
